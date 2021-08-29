@@ -1,6 +1,9 @@
 const commands: {
     [key: string]: string[]
 } = {
+    test: ['deno', 'test', '--allow-all', 'test.ts'],
+    run: ['deno', 'run', '--allow-all', 'main.ts'],
+    compile: ['deno', 'compile', '--allow-all', '--output', 'stacktion', 'main.ts'],
     format: [
         'prettier',
         '--config',
@@ -27,6 +30,18 @@ if (args.includes('--format')) {
 
 if (args.includes('--lint')) {
     chosen = commands.lint
+}
+
+if (args.includes('--run')) {
+    chosen = commands.run
+}
+
+if (args.includes('--compile')) {
+    chosen = commands.compile
+}
+
+if (args.includes('--test')) {
+    chosen = commands.test
 }
 
 if (chosen) {
@@ -57,8 +72,11 @@ Welcome to the Stacktion Project Management CLI!
         stacktion [command]
 
     Commands:
+        --run: Run the project
+        --compile: Compiles the project
         --format: Format the code
         --lint: Lint the code
+        --test: Run the tests
 `)
     Deno.exit(1)
 }

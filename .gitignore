@@ -107,3 +107,8 @@ dist
 
 # Remove jetbrains
 .idea
+
+# Compiled binaries
+*.exe/
+stacktion.*
+manage.*
