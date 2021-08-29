@@ -5,7 +5,7 @@ beruvchi dastur
 
 **Author:** [GitHub Copilot](https://copilot.github.com/)
 
-**Contributor:** [Genemator](https://copilot.github.com/)
+**Co-Author:** [Genemator](https://github.com/genemators)
 
 ## Proyekt Menejeri
 
