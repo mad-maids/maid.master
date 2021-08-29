@@ -7,7 +7,7 @@ beruvchi dastur
 
 **Contributor:** @genemators
 
-# Proyekt Menejeri
+## Proyekt Menejeri
 
 Proyekt menejeri ushbu proyekt boshqarish, tekshirish va hamda uni tartibga solib turish vazifalarini boshqaradi. Proyekt menejerini ushbu komanda orqali kompilyatsiya qilasiz:
 
