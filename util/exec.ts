@@ -20,8 +20,8 @@ export const run = async (
     }
     const process = Deno.run({
         cmd: command,
-        stderr: "inherit",
-        stdout: "inherit",
+        stderr: 'inherit',
+        stdout: 'inherit'
     })
     if ((await process.status()).code === 0) {
         if (success) {

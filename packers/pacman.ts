@@ -31,7 +31,7 @@ export default class Pacman {
             }
         }
     }
-    
+
     async uninstall(pacman: string): Promise<void> {
         await this.update()
         if ((await this.list()).includes(pacman)) {
@@ -46,5 +46,4 @@ export default class Pacman {
             log.warning(`⚠️ The package ${pacman} is not installed!`)
         }
     }
-}
 }
