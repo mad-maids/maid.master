@@ -1,3 +1,5 @@
+#!/usr/bin/env -S deno -q run --allow-all
+
 const commands: {
     [key: string]: string[]
 } = {
