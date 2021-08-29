@@ -11,13 +11,13 @@ beruvchi dastur
 
 Proyekt menejeri ushbu proyekt boshqarish, tekshirish va hamda uni tartibga solib turish vazifalarini boshqaradi. Proyekt menejerini ushbu komanda orqali kompilyatsiya qilasiz:
 
-```ts
+```shell
 deno compile --allow-all .\manage.ts
 ```
 
 Mavjud komandalar:
 
-```ts
+```
 	--run - proyektni ishga tushurishi kerak (vrode 😈)
 	--format - proyekt xavolalarini formatlaydi va keraksiz tab va joylarni olib tashaydi
 	--lint - ushbu proyektda barcha xatolik va maslahatlar chiqarib korsatadi
