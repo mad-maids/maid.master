@@ -15,7 +15,6 @@ export default async (
   if (isWindows) {
     command.unshift("cmd", "/c");
   }
-
   const process = Deno.run({
     cmd: command,
   });

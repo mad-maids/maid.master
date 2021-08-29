@@ -1,4 +1,4 @@
-import { log } from "../mod.ts";
+import { log, sub } from "../mod.ts";
 import exec from "../exec.ts";
 
 export const pacman = async (
@@ -29,14 +29,8 @@ export const pacman = async (
 
 export const exists = async (app: string): Promise<boolean | undefined> => {
   if (app) {
-    const { output } = await Deno.run({
-      cmd: [
-        "pacman",
-        "-Q",
-        app,
-      ],
-    });
-    return output.toString().includes(app);
+    const result = await sub.output(["pacman", "-Q"]);
+    return result.includes(app);
   }
 
   if (!app) {
@@ -79,12 +73,9 @@ export const uninstall = async (app: string): Promise<void> => {
 };
 
 export const init = async (): Promise<void> => {
-  const oldPath = Deno.cwd();
-  Deno.chdir(Deno.env.get("HOME") ?? "~");
-
   // Install git if it doesn't exist
-  if (exists("git")) {
-    log.info("Git is already installed!");
+  if (await exists("git")) {
+    log.warning("Git is already installed!");
   } else {
     await exec(
       ["sudo", "pacman", "-S", "git", "--noconfirm"],
@@ -94,17 +85,36 @@ export const init = async (): Promise<void> => {
   }
 
   // Install the yay package manager
-  await exec(
-    ["git", "clone", "https://aur.archlinux.org/yay.git"],
-    "Successfully cloned the yay repository...",
-    "Failed with cloning yay repository",
-  );
+  if (await exists("yay")) {
+    log.warning("Yay is already installed!");
+  } else {
 
-  await exec(
-    ["cd", "yay", "&&", "makepkg", "-si", "--noconfirm"],
-    "Successfully install the yay package manager",
-    "Failed with installing the yay manager!",
-  );
 
-  Deno.chdir(oldPath);
+
+    await exec(
+      ["git", "clone", "https://aur.archlinux.org/yay.git", ".yay"],
+      "Successfully cloned the yay repository...",
+      "Failed with cloning yay repository",
+    );
+
+    // Enter the darkness
+    await Deno.chdir(".yay");
+
+    await exec(
+      ["makepkg", "-si", "--noconfirm"],
+      "Successfully installed the yay package manager",
+      "Failed with installing the yay manager!",
+    );
+
+    // Exit the darkness
+    await Deno.chdir("..");
+
+    // Clean up
+    await Deno.remove(".yay");
+    // await exec(
+    //   ["rm", "-rf", "yay"],
+    //   "Successfully removed the yay repository",
+    //   "Failed with removing the yay repository",
+    // );
+  }
 };
