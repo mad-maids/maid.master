@@ -20,18 +20,31 @@ export default class Pacman {
     async install(pacman: string): Promise<void> {
         await this.update()
         if ((await this.list()).includes(pacman)) {
-            console.log(`  ⚠  The package ${pacman} is already installed!`)
+            log.warning(`⚠️ The package ${pacman} is already installed!`)
         } else {
-            const spinner = Spinner.default.getInstance()
-            spinner.setSpinnerType('clock')
-            spinner.start(`Installing ${pacman}...\n`)
+            log.info(`⬇️ Installing ${pacman}...`)
             try {
                 await run(['pacman', '-S', pacman])
-                await spinner.succeed(`${pacman} installed!`)
-            } catch (e) {
-                await spinner.fail(`Failed to install ${pacman}!`)
-                throw e
+                log.info(`✅ ${pacman} has been successfully installed!`)
+            } catch (error) {
+                log.error(`🛑 Unable to install: ${error.message}`)
             }
         }
     }
+    
+    async uninstall(pacman: string): Promise<void> {
+        await this.update()
+        if ((await this.list()).includes(pacman)) {
+            log.info(`⬇️ Uninstalling ${pacman}...`)
+            try {
+                await run(['pacman', '-R', pacman])
+                log.info(`✅ ${pacman} has been successfully uninstalled!`)
+            } catch (error) {
+                log.error(`🛑 Unable to uninstall: ${error.message}`)
+            }
+        } else {
+            log.warning(`⚠️ The package ${pacman} is not installed!`)
+        }
+    }
+}
 }

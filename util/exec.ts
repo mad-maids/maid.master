@@ -15,6 +15,9 @@ export const run = async (
     if (isWindows) {
         command.unshift('cmd', '/c')
     }
+    if (!isWindows) {
+        command.unshift('sh', '-c')
+    }
     const process = Deno.run({
         cmd: command,
         stderr: "inherit",
@@ -34,6 +37,9 @@ export const run = async (
 export const output = async (command: string[]): Promise<string> => {
     if (isWindows) {
         command.unshift('cmd', '/c')
+    }
+    if (!isWindows) {
+        command.unshift('sh', '-c')
     }
     const process = Deno.run({
         cmd: command,
