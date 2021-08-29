@@ -1,50 +1,18 @@
 #!/usr/bin/env -S deno -q run --allow-all
 
-const commands: {
-    [key: string]: string[]
-} = {
-    test: ['deno', 'test', '--allow-all', 'test.ts'],
-    run: ['deno', 'run', '--allow-all', 'main.ts'],
-    compile: ['deno', 'compile', '--allow-all', '--output', 'stacktion', 'main.ts'],
-    format: [
-        'prettier',
-        '--config',
-        '.prettierrc',
-        '--write',
-        '--check',
-        '**/*.ts'
-    ],
-    lint: ['deno', 'lint']
-}
-let chosen: string[] | null = null
-
 const args = Deno.args
+let chosen: string[] | null = null
+const commands: {
+    commands: { [key: string]: string[] }
+} = JSON.parse(await Deno.readTextFile('./commands.json'))
 
 if (Deno.build.os === 'windows') {
-    for (const entry of Object.keys(commands)) {
-        commands[entry].unshift('cmd', '/C')
+    for (const entry of Object.keys(commands.commands)) {
+        commands.commands[entry].unshift('cmd', '/C')
     }
 }
 
-if (args.includes('--format')) {
-    chosen = commands.format
-}
-
-if (args.includes('--lint')) {
-    chosen = commands.lint
-}
-
-if (args.includes('--run')) {
-    chosen = commands.run
-}
-
-if (args.includes('--compile')) {
-    chosen = commands.compile
-}
-
-if (args.includes('--test')) {
-    chosen = commands.test
-}
+chosen = commands.commands[args[0].toString().replace(/\-\-/gi, '')]
 
 if (chosen) {
     const p = Deno.run({
