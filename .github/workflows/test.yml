@@ -1,0 +1,19 @@
+name: Test CI
+
+on: [push, pull_request]
+
+jobs:
+  web:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.13.2
+          node-version: 14
+      - name: Get Prettier
+      - run: npm install -g prettier
+      - name: Start Testing
+      - run: deno run --allow-all manage.ts --prt
+      - run: deno run --allow-all manage.ts --lint
