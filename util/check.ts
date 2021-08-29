@@ -1,5 +1,5 @@
-import { log } from './mod.ts'
-import { os } from './constants.ts'
+import { log } from '../mod.ts'
+import { os } from '../constants.ts'
 
 const commands = (): string[] => {
     switch (os) {

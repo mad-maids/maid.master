@@ -1,4 +1,4 @@
-import { os } from './constants.ts'
+import { os } from '../constants.ts'
 
 export default () => {
     switch (os) {
