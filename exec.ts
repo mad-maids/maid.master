@@ -1,5 +1,5 @@
-import { isWindows } from "./constants.ts";
-import { log } from "./mod.ts";
+import { isWindows } from './constants.ts'
+import { log } from './mod.ts'
 
 /**
  * Executes a command and returns the
@@ -8,23 +8,23 @@ import { log } from "./mod.ts";
  */
 
 export default async (
-  command: string[],
-  success?: string,
-  error?: string,
+    command: string[],
+    success?: string,
+    error?: string
 ): Promise<void> => {
-  if (isWindows) {
-    command.unshift("cmd", "/c");
-  }
-  const process = Deno.run({
-    cmd: command,
-  });
-  if ((await process.status()).code === 0) {
-    if (success) {
-      log.info(success);
+    if (isWindows) {
+        command.unshift('cmd', '/c')
     }
-  } else {
-    if (error) {
-      log.error(error);
+    const process = Deno.run({
+        cmd: command
+    })
+    if ((await process.status()).code === 0) {
+        if (success) {
+            log.info(success)
+        }
+    } else {
+        if (error) {
+            log.error(error)
+        }
     }
-  }
-};
+}

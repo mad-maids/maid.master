@@ -1,4 +1,6 @@
 # Logs
+package.json
+yarn.lock
 logs
 *.log
 npm-debug.log*
@@ -102,3 +104,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Remove jetbrains
+.idea

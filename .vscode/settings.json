@@ -2,15 +2,18 @@
   "deno.enable": true,
   "deno.lint": true,
   "deno.unstable": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true
+  },
   "cSpell.words": [
+    "Parens",
     "Rcns",
+    "Stacktion",
     "argies",
     "camelcase",
     "makepkg",
     "noconfirm",
-    "pacman"
-  ],
-  "deno.suggest.imports.hosts": {
-    "https://deno.land": true
-  }
+    "pacman",
+    "prettierrc"
+  ]
 }

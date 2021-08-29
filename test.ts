@@ -29,6 +29,6 @@
 
 // Deno.exit(code);
 
-import { init } from "./packers/pacman.ts";
+import { init } from './packers/pacman.ts'
 
-await init();
+await init()
