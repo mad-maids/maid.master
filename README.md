@@ -3,9 +3,9 @@
 🪓 Istalgan stek uchun ishlatilayotgan operatsion tizimda sharoit yaratib
 beruvchi dastur
 
-**Author:** GitHub Copilot
+**Author:** [GitHub Copilot](https://copilot.github.com/)
 
-**Contributor:** @genemators
+**Contributor:** [Genemator](https://copilot.github.com/)
 
 ## Proyekt Menejeri
 
