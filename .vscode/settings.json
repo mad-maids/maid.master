@@ -6,6 +6,7 @@
     "Rcns",
     "argies",
     "camelcase",
+    "makepkg",
     "noconfirm",
     "pacman"
   ],

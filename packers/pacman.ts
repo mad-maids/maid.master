@@ -1,4 +1,31 @@
 import { log } from "../mod.ts";
+import exec from "../exec.ts";
+
+export const pacman = async (
+  task: "install" | "uninstall" | "init",
+  pack?: string,
+): Promise<void> => {
+  switch (task) {
+    case "init":
+      await init();
+      break;
+    case "install":
+    case "uninstall":
+      if (pack) {
+        switch (task) {
+          case "install":
+            await install(pack);
+            break;
+          case "uninstall":
+            await uninstall(pack);
+            break;
+        }
+      }
+      break;
+    default:
+      log.error(`Invalid task: ${task}`);
+  }
+};
 
 export const exists = async (app: string): Promise<boolean | undefined> => {
   if (app) {
@@ -54,16 +81,30 @@ export const uninstall = async (app: string): Promise<void> => {
 export const init = async (): Promise<void> => {
   const oldPath = Deno.cwd();
   Deno.chdir(Deno.env.get("HOME") ?? "~");
-  const git = Deno.run({
-    cmd: ["sudo", "pacman", "-S", "git", "--noconfirm"],
-  });
 
-  if ((await git.status()).code === 0) {
-    log.info("Git was installed!");
+  // Install git if it doesn't exist
+  if (exists("git")) {
+    log.info("Git is already installed!");
   } else {
-    log.error("Git was not installed!");
-    Deno.exit(1)
+    await exec(
+      ["sudo", "pacman", "-S", "git", "--noconfirm"],
+      "Git was installed successfully!",
+      "Git failed with installing!",
+    );
   }
 
-  
+  // Install the yay package manager
+  await exec(
+    ["git", "clone", "https://aur.archlinux.org/yay.git"],
+    "Successfully cloned the yay repository...",
+    "Failed with cloning yay repository",
+  );
+
+  await exec(
+    ["cd", "yay", "&&", "makepkg", "-si", "--noconfirm"],
+    "Successfully install the yay package manager",
+    "Failed with installing the yay manager!",
+  );
+
+  Deno.chdir(oldPath);
 };

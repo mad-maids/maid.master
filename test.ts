@@ -1,3 +1,11 @@
+/**
+ * The place where I test some of
+ * my ideas which might be dumb to
+ * put in production code. Sorry,
+ * if I broke your mind with my
+ * stupid code here ^_^
+ */
+
 const p = Deno.run({
   cmd: ["cmd", "/c", "scoops"],
   stdout: "piped",
