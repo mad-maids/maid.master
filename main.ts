@@ -1,0 +1,1 @@
+await console.log('Hello World');
