@@ -1,5 +1,15 @@
 {
-    "deno.enable": true,
-    "deno.lint": true,
-    "deno.unstable": true
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "cSpell.words": [
+    "Rcns",
+    "argies",
+    "camelcase",
+    "noconfirm",
+    "pacman"
+  ],
+  "deno.suggest.imports.hosts": {
+    "https://deno.land": true
+  }
 }
