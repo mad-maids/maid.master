@@ -1,5 +1,5 @@
-import { isWindows } from './constants.ts'
-import { log } from './mod.ts'
+import { isWindows } from '../constants.ts'
+import { log } from '../mod.ts'
 
 /**
  * Executes a command and returns the

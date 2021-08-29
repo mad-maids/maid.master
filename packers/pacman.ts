@@ -1,5 +1,5 @@
 import { log, sub } from '../mod.ts'
-import exec from '../exec.ts'
+import exec from '../util/exec.ts'
 
 export const pacman = async (
     task: 'install' | 'uninstall' | 'init',
