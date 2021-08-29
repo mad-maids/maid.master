@@ -7,7 +7,7 @@ import { log } from '../mod.ts'
  * (Yes, I really suffered without this) ಠ_ಠ
  */
 
-export default async (
+export const run = async (
     command: string[],
     success?: string,
     error?: string
@@ -16,7 +16,9 @@ export default async (
         command.unshift('cmd', '/c')
     }
     const process = Deno.run({
-        cmd: command
+        cmd: command,
+        stderr: "inherit",
+        stdout: "inherit",
     })
     if ((await process.status()).code === 0) {
         if (success) {
@@ -28,3 +30,17 @@ export default async (
         }
     }
 }
+
+export const output = async (command: string[]): Promise<string> => {
+    if (isWindows) {
+        command.unshift('cmd', '/c')
+    }
+    const process = Deno.run({
+        cmd: command,
+        stdout: 'piped'
+    })
+    const output = await process.output()
+    return new TextDecoder().decode(output)
+}
+
+export default { run, output }

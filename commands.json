@@ -1,9 +1,24 @@
 {
-    "commands": {
-        "test": ["deno", "test", "--allow-all", "test.ts"],
-        "run": ["deno", "run", "--allow-all", "main.ts"],
-        "compile": ["deno", "compile", "--allow-all", "--output", "stacktion", "main.ts"],
-        "format": ["prettier", "--config", ".prettierrc", "--write", "--check", "**/*.ts"],
-        "lint": ["deno", "lint"]
-    }
+  "commands": {
+    "test": ["deno", "test", "--allow-all", "test.ts"],
+    "run": ["deno", "run", "--allow-all", "main.ts"],
+    "fmt": ["deno", "fmt"],
+    "lint": ["deno", "lint"],
+    "compile": [
+      "deno",
+      "compile",
+      "--allow-all",
+      "--output",
+      "stacktion",
+      "main.ts"
+    ],
+    "prt": [
+      "prettier",
+      "--config",
+      ".prettierrc",
+      "--write",
+      "--check",
+      "**/*.ts"
+    ]
+  }
 }

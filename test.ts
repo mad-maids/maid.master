@@ -14,7 +14,7 @@
 
 // const { code } = await p.status();
 
-// // Reading the outputs closes their pipes
+// //  Reading the outputs closes their pipes
 // const rawOutput = await p.output();
 // const rawError = await p.stderrOutput();
 
@@ -29,6 +29,11 @@
 
 // Deno.exit(code);
 
-import { init } from './packers/pacman.ts'
+// import { output } from './util/exec.ts'
 
-await init()
+// console.log(await output(['pacman', '-Q']))
+
+import Pacman from './packers/pacman.ts'
+
+const packageManager = new Pacman()
+await packageManager.install('python')
