@@ -6,9 +6,9 @@
  * stupid code here ^_^
  */
 
-// import Pacman from './packers/pacman.ts'
-import Brew from './packers/brew.ts'
+import Packager from "./util/packager.ts"
 
-const packageManager = new Brew()
+const packageManager = Packager();
 const list = await packageManager.list()
 await packageManager.install('go')
+console.log(list)

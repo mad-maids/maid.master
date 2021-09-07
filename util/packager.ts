@@ -1,12 +1,15 @@
 import { os } from '../constants.ts'
 
-export default () => {
+import Brew from "../middleware/brew.ts"
+import Pacman from "../middleware/pacman.ts"
+
+export default (): Brew | Pacman => {
     switch (os) {
         case 'darwin':
-            return 'brew'
+            return new Brew()
         case 'linux':
-            return 'yay'
+            return new Pacman()
         case 'windows':
-            return 'scoop'
+            return new Pacman()
     }
 }
