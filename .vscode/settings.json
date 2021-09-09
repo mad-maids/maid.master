@@ -17,5 +17,6 @@
     "noconfirm",
     "pacman",
     "prettierrc"
-  ]
+  ],
+  "cmake.configureOnOpen": false
 }
