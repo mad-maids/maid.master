@@ -6,9 +6,9 @@
  * stupid code here ^_^
  */
 
-import Packager from "./util/packager.ts"
+import Packager from "./util/packager.ts";
 
 const packageManager = Packager();
-const list = await packageManager.list()
-await packageManager.install('go')
-console.log(list)
+const list = await packageManager.list();
+await packageManager.install("go");
+console.log(list);

@@ -1,36 +1,36 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Test",
-            "request": "launch",
-            "type": "node",
-            "program": "${workspaceFolder}\\test.ts",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "deno",
-            "runtimeArgs": [
-                "run",
-                "--unstable",
-                "--inspect",
-                "--allow-all"
-            ]
-        },
-        {
-            "name": "Run",
-            "request": "launch",
-            "type": "node",
-            "program": "main.ts",
-            "cwd": "${workspaceFolder}",
-            "runtimeExecutable": "deno",
-            "runtimeArgs": [
-                "run",
-                "--unstable",
-                "--inspect",
-                "--allow-all"
-            ]
-        }
-    ]
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Test",
+      "request": "launch",
+      "type": "node",
+      "program": "${workspaceFolder}\\test.ts",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": [
+        "run",
+        "--unstable",
+        "--inspect",
+        "--allow-all"
+      ]
+    },
+    {
+      "name": "Run",
+      "request": "launch",
+      "type": "node",
+      "program": "main.ts",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": [
+        "run",
+        "--unstable",
+        "--inspect",
+        "--allow-all"
+      ]
+    }
+  ]
 }
