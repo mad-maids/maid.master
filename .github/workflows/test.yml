@@ -3,17 +3,20 @@ name: Test CI
 on: [push, pull_request]
 
 jobs:
-  web:
-    runs-on: macos-latest
+  lint:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-      - uses: denoland/setup-deno@v1
+      - name: Clone repository
+        uses: actions/checkout@v2
         with:
-          deno-version: v1.13.2
-          node-version: 14
-      - name: Get Prettier
-      - run: npm install -g prettier
-      - name: Start Testing
-      - run: deno run --allow-all manage.ts --prt
-      - run: deno run --allow-all manage.ts --lint
+          submodules: false
+          persist-credentials: false
+
+      - name: Set up Deno
+        uses: denoland/setup-deno@v1.0.0
+
+      - name: Format
+        run: deno fmt --check
+
+      - name: Lint
+        run: deno lint
