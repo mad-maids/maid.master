@@ -1,1 +1,0 @@
-deno compile --allow-all manage.ts --output build/manage

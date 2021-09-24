@@ -4,6 +4,8 @@ import welcomeMessage from './messages/welcome.ts'
 
 const args: string[] = Deno.args;
 
+console.log(args)
+
 if (args.length == 0) {
   welcomeMessage();
 }
