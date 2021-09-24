@@ -1,15 +1,15 @@
 #!/usr/bin/env -S deno -q run --allow-all
 
-import welcomeMessage from './messages/welcome.ts'
+import messages from './messages/index.ts'
 
 const args: string[] = Deno.args;
 
-console.log(args)
-
 if (args.length == 0) {
-  welcomeMessage();
+  messages.help();
+  Deno.exit(1);
 }
 
+// TOOD: write argument parser and handle
 
 let chosen: string[] | null = null;
 const commands: {
@@ -45,5 +45,6 @@ if (chosen) {
 
   Deno.exit(code);
 } else {
-  welcomeMessage();
+  messages.help();
+  Deno.exit(1);
 }
