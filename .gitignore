@@ -112,3 +112,4 @@ dist
 *.exe/
 stacktion.*
 manage.*
+build/

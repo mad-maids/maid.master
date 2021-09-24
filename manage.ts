@@ -1,6 +1,14 @@
 #!/usr/bin/env -S deno -q run --allow-all
 
-const args = Deno.args;
+import welcomeMessage from './messages/welcome.ts'
+
+const args: string[] = Deno.args;
+
+if (args.length == 0) {
+  welcomeMessage();
+}
+
+
 let chosen: string[] | null = null;
 const commands: {
   commands: { [key: string]: string[] };
@@ -35,18 +43,5 @@ if (chosen) {
 
   Deno.exit(code);
 } else {
-  console.log(`
-Welcome to the Stacktion Project Management CLI!
-
-    Usage:
-        stacktion [command]
-
-    Commands:
-        --run: Run the project
-        --compile: Compiles the project
-        --format: Format the code
-        --lint: Lint the code
-        --test: Run the tests
-`);
-  Deno.exit(1);
+  welcomeMessage();
 }
