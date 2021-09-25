@@ -1,9 +1,9 @@
 [x] easy-to-use runscript: bash run.sh ...arguments
 [ ] argument parser and command runner [MEDIUM PRIORITY]
 [ ] os detection [MEDIUM PRIORITY]
-[ ] package manager detection [MEDIUM PRIORITY]
+[x] package manager detection [MEDIUM PRIORITY]
 [ ] package manager installer if none was found [MEDIUM PRIORITY]
-[ ] universal interface for all package managers
+[x] universal interface for all package managers
 [ ] package search module (installed only mode, not installed only mode)
 [ ] beautify search results [LOW PRIORITY]
 [ ] install from search result [LOW PRIORITY]
