@@ -19,6 +19,6 @@ export default async function run(cmd: string[] = []): Promise<RunnerOutput> {
             return new RunnerOutput(code, rawError);
         }
     } catch (e) {
-        return new RunnerOutput(1, new TextEncoder().encode(e.message))
+        return new RunnerOutput(1, e.message);
     }
 }

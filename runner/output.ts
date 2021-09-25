@@ -21,9 +21,14 @@ export default class RunnerOutput {
         return this._rawMessage;
     }
 
-    constructor (code: number, message: Uint8Array) {
+    constructor (code: number, message: Uint8Array|string) {
         this._code = code;
-        this._rawMessage = message,
-        this._message = new TextDecoder().decode(message);
+        if (message instanceof Uint8Array) {
+            this._rawMessage = message;
+            this._message = new TextDecoder().decode(message);
+        } else {
+            this._rawMessage = new TextEncoder().encode(message);
+            this._message = message;
+        }
     }
 }
