@@ -43,7 +43,7 @@ export default class Pacman {
         log.error(`🛑 Unable to uninstall: ${error.message}`);
       }
     } else {
-      log.warning(`⚠️ The package ${pacman} is not installed!`);
+      log.warning(`⚠️ The package ${pacman} is not uninstalled!`);
     }
   }
 }

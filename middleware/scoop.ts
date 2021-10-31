@@ -48,7 +48,7 @@ export default class Brew {
         log.error(`🛑 Unable to uninstall: ${error.message}`);
       }
     } else {
-      log.warning(`⚠️ The package ${brew} is not installed!`);
+      log.warning(`⚠️ The package ${brew} is not uninstalled!`);
     }
   }
 }
